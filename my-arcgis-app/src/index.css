@@ -1,12 +1,41 @@
-#root,
-html,
-body {
-  background-color: var(--calcite-ui-foreground-2);
-  height: 100%;
-  margin: 0;
+.app-shell{
+  display: grid;
+  grid-template-rows: 52px 1fr 28px; /* create 3 rows with height 52px 1fr 28px (1fr is the remaining size after minus 25px and 28px 
+                                          from 100vh = 100% of screensize view port) */
+  height: 100vh;
 }
 
-arcgis-chart {
-  width: 350px;
-  height: 250px;
+.app-toobar{
+  border-bottom: 1px solid #ddd;
+  display: flex; /* childrens display side by side*/
+  align-items: center;
+  padding : 0 16px;
+}
+
+.app-body{
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+}
+
+.app-sidebar{
+  border-right: 1px solid #ddd;
+  padding:12px
+}
+
+.app-map{
+  background: #e9e4d8;
+}
+
+.app-detail{
+  border-left: 1px solid #ddd;
+  padding:12px;
+}
+
+.app-status{
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 12px;
+  color:#777;
 }
