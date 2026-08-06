@@ -25,6 +25,7 @@ import "@esri/calcite-components/components/calcite-navigation-logo";
 import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
 import {useEffect,useRef} from "react";
+import {Search,Ruler,Pencil} from "lucide-react";
 import mapView from "@arcgis/core/views/MapView";
 
 export default function App() {
@@ -53,6 +54,16 @@ export default function App() {
     <div className="app-shell">
       <header className="app-toolbar">
         <span>GeoOps</span>
+
+        <div className="toolbar-search">
+          <Search size={16}/>
+          <input type = "text" placeholder="Search location or feature"/>
+        </div>
+
+        <div className="toolbar-tools">
+          <button><Ruler size={16}/></button>
+          <button aria-label="Draw"><Pencil size={16}/></button>
+        </div>
       </header>
 
       <div className="app-body">

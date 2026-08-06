@@ -3,9 +3,10 @@
   grid-template-rows: 52px 1fr 28px; /* create 3 rows with height 52px 1fr 28px (1fr is the remaining size after minus 25px and 28px 
                                           from 100vh = 100% of screensize view port) */
   height: 100vh;
+  min-height: 0;
 }
 
-.app-toobar{
+.app-toolbar{
   border-bottom: 1px solid #ddd;
   display: flex; /* childrens display side by side*/
   align-items: center;
@@ -15,15 +16,20 @@
 .app-body{
   display: grid;
   grid-template-columns: 220px 1fr 220px;
+  min-height: 0;
 }
 
 .app-sidebar{
   border-right: 1px solid #ddd;
-  padding:12px
+  padding:12px;
+  height: 100%;
 }
 
 .app-map{
   background: #e9e4d8;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
 }
 
 .app-detail{
@@ -31,7 +37,7 @@
   padding:12px;
 }
 
-.app-status{
+.app-statusbar{
   border-top: 1px solid #ddd;
   display: flex;
   align-items: center;
@@ -39,3 +45,11 @@
   font-size: 12px;
   color:#777;
 }
+
+/*
+min-height = wont go smaller than it needs specified, but the size will keep growing if content is 
+going beyong the height 
+
+max-height = it will go as small as needed to wrap around the element but it will stop growing once it,
+hits the max height set. 
+*/
