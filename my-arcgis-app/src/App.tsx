@@ -26,6 +26,7 @@ import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
 import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
+import DistanceMeasurement2DV from "@arcgis/core/widgets/DistanceMeasurement2D";
 import mapView from "@arcgis/core/views/MapView";
 
 export default function App() {
@@ -46,7 +47,7 @@ export default function App() {
       zoom: 11,
      });
 
-     return () => view.destroy();
+     return () => view.destroy(); // This is the clean up after use effect runs 
 
   },[]);
 
@@ -68,7 +69,7 @@ export default function App() {
 
       <div className="app-body">
         <aside className = "app-sidebar">sidebar</aside>
-        <main className = "app-map" ref={mapDivRef}></main>
+        <div className = "app-map" ref={mapDivRef}></div>
         <aside className="app-detail">detail panel</aside>
       </div>
   <footer className= "app-statusbar">status bar</footer>

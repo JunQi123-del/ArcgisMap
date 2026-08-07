@@ -53,3 +53,45 @@ going beyong the height
 max-height = it will go as small as needed to wrap around the element but it will stop growing once it,
 hits the max height set. 
 */
+
+.toolbar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f3ec;
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 32px;
+  width: 260px;
+  margin-left : 8px
+}
+
+.toolbar-search input{
+  border:None;
+  background: transparent;
+  outline: none;
+  font-size: 12px;
+  width: 260px;
+}
+
+.toolbar-tools{
+  display: flex;
+  gap:4px; /* gap between children*/
+  margin-left: 8px;
+}
+
+.toolbar-tools button{
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.toolbar-search button:hover{
+  background-color: #f5f3ec;
+}
