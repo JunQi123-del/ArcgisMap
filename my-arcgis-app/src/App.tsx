@@ -27,37 +27,15 @@ import MapView from "@arcgis/core/views/MapView.js";
 import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D";
-import mapView from "@arcgis/core/views/MapView";
+
 import MapCanvas from "@/components/MapComponent"
 
 export default function App() {
-
-  const mapDivRef = useRef<HTMLDivElement>(null);
 
   const [view, setView] = useState<MapView | null>(null)
 
   const [activeTool, setActiveTool] = useState<"measure" | "draw" | null>(null);
 
-
-  useEffect(() =>{
-     if (!mapDivRef.current) return;
-
-     const map = new Map({
-      basemap: "hybrid"
-     });
-
-     const view = new MapView({
-      container: mapDivRef.current,
-      map: map,
-      center: [103.8198, 1.3521],
-      zoom: 11,
-     });
-
-     setView(view)
-
-     return () => view.destroy(); // This is the clean up after use effect runs 
-
-  },[]);
 
   useEffect(() =>{
     if (!view) return;
@@ -93,7 +71,7 @@ export default function App() {
       </header>
 
       <div className="app-body">
-        <div className = "app-map"><MapCanvas/></div>
+        <div className = "app-map"><MapCanvas onViewReady={setView}/></div>
       </div>
   <footer className= "app-statusbar">status bar</footer>
   </div>
