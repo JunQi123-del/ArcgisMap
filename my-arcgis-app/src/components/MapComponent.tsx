@@ -8,7 +8,7 @@ export default function MapCanvas(){
         basemap={baseMapConfig.baseMap}
         center={baseMapConfig.center}
         zoom={baseMapConfig.zoom}
-        style={{ position: "absolute", inset: 0 }}
+        // style={{ position: "absolute", inset: 0 }}
         />
     )
 }

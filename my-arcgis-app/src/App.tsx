@@ -28,6 +28,7 @@ import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D";
 import mapView from "@arcgis/core/views/MapView";
+import MapCanvas from "@/components/MapComponent"
 
 export default function App() {
 
@@ -92,9 +93,7 @@ export default function App() {
       </header>
 
       <div className="app-body">
-        <aside className = "app-sidebar">sidebar</aside>
-        <div className = "app-map" ref={mapDivRef}></div>
-        <aside className="app-detail">detail panel</aside>
+        <div className = "app-map"><MapCanvas/></div>
       </div>
   <footer className= "app-statusbar">status bar</footer>
   </div>

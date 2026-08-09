@@ -1,5 +1,5 @@
 {
-    "baseMap" : "arcgis-topographic",
+    "baseMap" : "satellite",
     "center" : "103.8198,1.3521",
     "zoom" : 11
 

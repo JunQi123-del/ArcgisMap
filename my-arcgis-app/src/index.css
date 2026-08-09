@@ -14,22 +14,18 @@
 }
 
 .app-body{
-  display: grid;
-  grid-template-columns: 220px 1fr 220px;
-  min-height: 0;
+  position: relative;
+
 }
 
-.app-sidebar{
-  border-right: 1px solid #ddd;
-  padding:12px;
-  height: 100%;
-}
 
 .app-map{
   background: #e9e4d8;
-  overflow: hidden;
   min-height: 0;
+  position: relative;
   height: 100%;
+  width: 100%;
+  min-height: 0;
 }
 
 .app-detail{
