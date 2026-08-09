@@ -10,16 +10,7 @@ import { useState } from "react";
 // });
 
 
-// Individual imports for each Map, Chart and Calcite component
-import "@arcgis/map-components/components/arcgis-expand";
-import "@arcgis/map-components/components/arcgis-legend";
-import "@arcgis/map-components/components/arcgis-map";
-import "@arcgis/map-components/components/arcgis-search";
-import "@arcgis/map-components/components/arcgis-zoom";
-import "@arcgis/charts-components/components/arcgis-chart";
-import "@esri/calcite-components/components/calcite-shell";
-import "@esri/calcite-components/components/calcite-navigation";
-import "@esri/calcite-components/components/calcite-navigation-logo";
+
 
 // Import modules and types from the SDK's core API
 import Map from "@arcgis/core/Map.js";
@@ -27,6 +18,8 @@ import MapView from "@arcgis/core/views/MapView.js";
 import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D";
+import "@arcgis/map-components/components/arcgis-sketch";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 
 import MapCanvas from "@/components/MapComponent"
 
@@ -37,18 +30,6 @@ export default function App() {
   const [activeTool, setActiveTool] = useState<"measure" | "draw" | null>(null);
 
 
-  useEffect(() =>{
-    if (!view) return;
-    if (activeTool !== "measure") return;
-    
-    const measurement = new DistanceMeasurement2D({view});
-    view.ui.add(measurement, "top-right");
-
-    return () => {
-      view.ui.remove(measurement);
-      measurement.destroy();
-    };
-  },[view,activeTool])
 
   return (
     <div className="app-shell">
@@ -66,12 +47,17 @@ export default function App() {
           className={activeTool === "measure" ? "active" : ""} 
           onClick={() => setActiveTool(activeTool === "measure" ? null : "measure")}>
           <Ruler size={16}/></button>
-          <button aria-label="Draw"><Pencil size={16}/></button>
+
+          <button aria-label="Draw"
+          className={activeTool === "draw" ? "active" : ""}
+          onClick={() => setActiveTool(activeTool === "draw" ? null : "draw")}>
+          <Pencil size={16}/>
+          </button>
         </div>
       </header>
 
       <div className="app-body">
-        <div className = "app-map"><MapCanvas onViewReady={setView}/></div>
+        <div className = "app-map"><MapCanvas onViewReady={setView} activeTool={activeTool} /></div>
       </div>
   <footer className= "app-statusbar">status bar</footer>
   </div>
