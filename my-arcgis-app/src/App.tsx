@@ -26,12 +26,17 @@ import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
 import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
-import DistanceMeasurement2DV from "@arcgis/core/widgets/DistanceMeasurement2D";
+import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D";
 import mapView from "@arcgis/core/views/MapView";
 
 export default function App() {
 
   const mapDivRef = useRef<HTMLDivElement>(null);
+
+  const [view, setView] = useState<MapView | null>(null)
+
+  const [activeTool, setActiveTool] = useState<"measure" | "draw" | null>(null);
+
 
   useEffect(() =>{
      if (!mapDivRef.current) return;
@@ -47,9 +52,24 @@ export default function App() {
       zoom: 11,
      });
 
+     setView(view)
+
      return () => view.destroy(); // This is the clean up after use effect runs 
 
   },[]);
+
+  useEffect(() =>{
+    if (!view) return;
+    if (activeTool !== "measure") return;
+    
+    const measurement = new DistanceMeasurement2D({view});
+    view.ui.add(measurement, "top-right");
+
+    return () => {
+      view.ui.remove(measurement);
+      measurement.destroy();
+    };
+  },[view,activeTool])
 
   return (
     <div className="app-shell">
@@ -62,7 +82,11 @@ export default function App() {
         </div>
 
         <div className="toolbar-tools">
-          <button><Ruler size={16}/></button>
+          <button 
+          aria-label="Measure" 
+          className={activeTool === "measure" ? "active" : ""} 
+          onClick={() => setActiveTool(activeTool === "measure" ? null : "measure")}>
+          <Ruler size={16}/></button>
           <button aria-label="Draw"><Pencil size={16}/></button>
         </div>
       </header>

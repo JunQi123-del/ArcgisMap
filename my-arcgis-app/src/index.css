@@ -95,3 +95,9 @@ hits the max height set.
 .toolbar-search button:hover{
   background-color: #f5f3ec;
 }
+
+.toolbar-tools button.active{
+  background:#e6f1fb;
+  border-color:#185fa5;
+  color:#185fa5
+}
