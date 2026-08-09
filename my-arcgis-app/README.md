@@ -1,34 +1,32 @@
-# ArcGIS Maps SDK for JavaScript Vite React 19 TSX template
+# React + TypeScript + Vite
 
-📁 **[Click here to download this directory as a ZIP file](https://esri.github.io/jsapi-resources/zips/js-maps-sdk-react.zip)** 📁
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-This template demonstrates how to use the [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/latest/) in a Vite React 19 TSX application.
+Currently, two official plugins are available:
 
-## Get started
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-To quickly scaffold a new application using this template, run the following command in your terminal:
+## React Compiler
 
-```bash
-npx @arcgis/create -n my-arcgis-app -t react
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
 ```
 
-This template uses the following packages:
-
-- [`@arcgis/core`](https://www.npmjs.com/package/@arcgis/core)
-- [`@arcgis/map-components`](https://www.npmjs.com/package/@arcgis/map-components)
-- [`@arcgis/charts-components`](https://www.npmjs.com/package/@arcgis/charts-components)
-- [`@esri/calcite-components`](https://www.npmjs.com/package/@esri/calcite-components)
-
-## TypeScript
-
-This template is configured to use TypeScript. If you prefer to use JavaScript, you can:
-
-- Remove the `tsconfig.json` file
-- Update the file extensions from `.tsx` to `.jsx`
-- Remove the `vite.env.d.ts` file
-- Remove the `typescript` dependency from `package.json`
-- Remove the `@types/node`, `@types/react` and `@types/react-dom` dev dependencies from `package.json`
-
-## Resources
-
-See the [Get started with npm guide](https://developers.arcgis.com/javascript/latest/get-started/#use-arcgiscreate) for full instructions.
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
