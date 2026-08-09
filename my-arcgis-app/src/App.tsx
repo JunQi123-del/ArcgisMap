@@ -13,19 +13,12 @@ import { useState } from "react";
 
 
 // Import modules and types from the SDK's core API
-import Map from "@arcgis/core/Map.js";
-import MapView from "@arcgis/core/views/MapView.js";
-import {useEffect,useRef} from "react";
 import {Search,Ruler,Pencil} from "lucide-react";
-import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D";
 import "@arcgis/map-components/components/arcgis-sketch";
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 
 import MapCanvas from "@/components/MapComponent"
 
 export default function App() {
-
-  const [view, setView] = useState<MapView | null>(null)
 
   const [activeTool, setActiveTool] = useState<"measure" | "draw" | null>(null);
 
@@ -57,7 +50,7 @@ export default function App() {
       </header>
 
       <div className="app-body">
-        <div className = "app-map"><MapCanvas onViewReady={setView} activeTool={activeTool} /></div>
+        <div className = "app-map"><MapCanvas activeTool={activeTool} /></div>
       </div>
   <footer className= "app-statusbar">status bar</footer>
   </div>
