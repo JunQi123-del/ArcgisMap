@@ -39,6 +39,9 @@
     // rather than the .d.ts files from the libraries you are using.
     "skipLibCheck": true,
     // Full strict type-checking for template code.
-    "strict": true
+    "strict": true,
+    "paths":{
+      "@/*" : ["./src/*"]
+    }
   }
 }
